@@ -1,1 +1,32 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+<title>posion777 Admin</title>
+<style>
+body {
+  background: black;
+  color: red;
+  font-family: Arial;
+  text-align: center;
+}
+</style>
+</head>
+<body>
+
+<h1>🔥 Admin Panel 🔥</h1>
+<h2>Total Players:</h2>
+<ul id="list"></ul>
+
+<script>
+let players = JSON.parse(localStorage.getItem("players") || "[]");
+let list = document.getElementById("list");
+players.forEach(p=>{
+  let li=document.createElement("li");
+  li.innerText=p;
+  list.appendChild(li);
+});
+</script>
+
+</body>
+</html>
