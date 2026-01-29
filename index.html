@@ -1,17 +1,39 @@
-<div class="box">
-  <h2>🔥 posion777 Login 🔥</h2>
-
-  <input id="user" placeholder="Username"><br><br>
-  <input id="pass" type="password" placeholder="Password"><br><br>
-
-  <button onclick="login()">Login</button>
-</div>
-
-<script>
-function login(){
-  let u = document.getElementById("user").value;
-  let p = document.getElementById("pass").value;
-
-  window.location.href="game.html";
+<style>
+body{
+  background: black;
+  font-family: Arial;
 }
-</script>
+
+.box{
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  background: #111;
+  border: 2px solid red;
+  border-radius: 10px;
+  box-shadow: 0 0 15px red;
+  text-align: center;
+}
+
+h2{
+  color: red;
+}
+
+input{
+  width: 90%;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  margin: 5px 0;
+}
+
+button{
+  width: 95%;
+  padding: 10px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}
+</style>
