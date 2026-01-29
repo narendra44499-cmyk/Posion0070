@@ -1,42 +1,128 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Game</title>
+  <title>Dragon Tiger Game</title>
   <style>
     body {
-      background-color: black;
-      text-align: center;
+      margin: 0;
+      background: radial-gradient(circle, black, #111);
       color: white;
+      text-align: center;
       font-family: Arial, sans-serif;
+      overflow: hidden;
     }
-    img {
-      width: 200px;
-      margin-top: 50px;
+
+    h1 {
+      color: gold;
+      text-shadow: 0 0 10px red;
     }
-    button {
-      margin-top: 30px;
-      padding: 15px 30px;
+
+    #score, #timer {
       font-size: 20px;
-      background-color: red;
+      margin: 5px;
+    }
+
+    #gameArea {
+      position: relative;
+      width: 100vw;
+      height: 80vh;
+      border-top: 2px solid red;
+    }
+
+    #logo {
+      width: 100px;
+      position: absolute;
+      cursor: pointer;
+      display: none;
+      transition: top 0.3s, left 0.3s;
+    }
+
+    #startBtn {
+      padding: 15px 40px;
+      font-size: 22px;
+      background: red;
       color: white;
       border: none;
       border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px red;
+    }
+
+    #gameOver {
+      font-size: 28px;
+      color: yellow;
+      margin-top: 20px;
+      display: none;
     }
   </style>
 </head>
+
 <body>
 
-  <img src="logo.png" alt="Game Logo">
+<h1>🐉 Dragon Tiger Tap Game 🐯</h1>
+<div id="score">Score: 0</div>
+<div id="timer">Time: 30</div>
 
-  <h1>Welcome to My Game</h1>
+<button id="startBtn" onclick="startGame()">Start Game</button>
 
-  <button onclick="startGame()">Start Game</button>
+<div id="gameArea">
+  <img src="dragontiger.png" id="logo" onclick="hitLogo()">
+</div>
 
-  <script>
-    function startGame() {
-      alert("Game will start here!");
-    }
-  </script>
+<div id="gameOver"></div>
+
+<script>
+let score = 0;
+let timeLeft = 30;
+let timer;
+
+function startGame() {
+  score = 0;
+  timeLeft = 30;
+  document.getElementById("score").innerText = "Score: " + score;
+  document.getElementById("timer").innerText = "Time: " + timeLeft;
+  document.getElementById("gameOver").style.display = "none";
+  document.getElementById("startBtn").style.display = "none";
+
+  const logo = document.getElementById("logo");
+  logo.style.display = "block";
+  moveLogo();
+
+  timer = setInterval(() => {
+    timeLeft--;
+    document.getElementById("timer").innerText = "Time: " + timeLeft;
+    if (timeLeft <= 0) endGame();
+  }, 1000);
+}
+
+function moveLogo() {
+  const logo = document.getElementById("logo");
+  const area = document.getElementById("gameArea");
+
+  const maxX = area.clientWidth - 100;
+  const maxY = area.clientHeight - 100;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  logo.style.left = x + "px";
+  logo.style.top = y + "px";
+}
+
+function hitLogo() {
+  score++;
+  document.getElementById("score").innerText = "Score: " + score;
+  moveLogo();
+}
+
+function endGame() {
+  clearInterval(timer);
+  document.getElementById("logo").style.display = "none";
+  document.getElementById("startBtn").style.display = "block";
+  document.getElementById("gameOver").style.display = "block";
+  document.getElementById("gameOver").innerText = "Game Over! Your Score: " + score;
+}
+</script>
 
 </body>
 </html>
