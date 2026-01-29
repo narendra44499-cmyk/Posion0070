@@ -2,23 +2,84 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dragon vs Tiger</title>
+  <title>Dragon Tiger Game</title>
+  <style>
+    body {
+      background:#111;
+      color:white;
+      text-align:center;
+      font-family:Arial;
+    }
+    header{
+      background:red;
+      padding:15px;
+      font-size:22px;
+    }
+    .cards{
+      display:flex;
+      justify-content:space-around;
+      margin-top:30px;
+    }
+    .card{
+      background:#222;
+      padding:20px;
+      border-radius:10px;
+      width:40%;
+    }
+    button{
+      padding:10px 20px;
+      margin:10px;
+      background:red;
+      color:white;
+      border:none;
+      font-size:16px;
+    }
+  </style>
 </head>
-<body style="background:black;color:white;text-align:center;padding-top:50px;">
 
-<h1>🐉 Dragon VS 🐅 Tiger</h1>
+<body>
 
-<button onclick="playGame()" style="font-size:20px;padding:10px 30px;">PLAY</button>
+<header>🐉 DRAGON TIGER 🐯</header>
+
+<h2>Choose:</h2>
+
+<button onclick="play('dragon')">Dragon</button>
+<button onclick="play('tiger')">Tiger</button>
+
+<div class="cards">
+  <div class="card">
+    <h3>Dragon</h3>
+    <p id="dragonCard">?</p>
+  </div>
+  <div class="card">
+    <h3>Tiger</h3>
+    <p id="tigerCard">?</p>
+  </div>
+</div>
 
 <h2 id="result"></h2>
 
 <script>
-function playGame(){
-  let r = Math.random();
-  if(r < 0.5){
-    document.getElementById("result").innerText = "🐉 Dragon Wins!";
-  } else {
-    document.getElementById("result").innerText = "🐅 Tiger Wins!";
+function play(choice){
+  let dragon = Math.floor(Math.random()*13)+1;
+  let tiger = Math.floor(Math.random()*13)+1;
+
+  document.getElementById("dragonCard").innerText = dragon;
+  document.getElementById("tigerCard").innerText = tiger;
+
+  if(dragon > tiger){
+    var win = "dragon";
+  }else if(tiger > dragon){
+    var win = "tiger";
+  }else{
+    document.getElementById("result").innerText = "DRAW 🤝";
+    return;
+  }
+
+  if(choice == win){
+    document.getElementById("result").innerText = "YOU WIN 🎉 ("+win+" wins)";
+  }else{
+    document.getElementById("result").innerText = "YOU LOSE 😢 ("+win+" wins)";
   }
 }
 </script>
