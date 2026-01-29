@@ -1,45 +1,63 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <title>Dragon Tiger</title>
 <style>
-body {
-  background:#111;
+body{
+  margin:0;
+  font-family: Arial;
+  background:#0b0b0b;
   color:white;
-  font-family:Arial;
   text-align:center;
 }
-.header {
+.header{
   background:red;
-  padding:10px;
-  font-size:20px;
+  padding:12px;
+  font-size:22px;
 }
-button {
-  padding:10px 20px;
+button{
+  padding:12px 25px;
   margin:10px;
   background:red;
   color:white;
   border:none;
-  border-radius:5px;
+  border-radius:6px;
+  font-size:18px;
 }
-.cards {
+.box{
   display:flex;
   justify-content:space-around;
   margin-top:20px;
 }
-.box {
+.card{
   background:#222;
-  padding:15px;
-  border-radius:10px;
   width:40%;
-}
-img {
-  width:100px;
-}
-#result {
-  margin-top:20px;
+  padding:20px;
+  border-radius:10px;
   font-size:20px;
+}
+#result{
+  margin-top:20px;
+  font-size:22px;
+}
+#girl{
+  display:none;
+  font-size:80px;
+  animation: jump 1s infinite;
+}
+@keyframes jump{
+  0%{transform:translateY(0);}
+  50%{transform:translateY(-20px);}
+  100%{transform:translateY(0);}
+}
+.cards{
+  margin-top:40px;
+  font-size:40px;
+  animation: slide 3s linear infinite;
+}
+@keyframes slide{
+  0%{transform:translateX(-100%);}
+  100%{transform:translateX(100%);}
 }
 </style>
 </head>
@@ -48,62 +66,39 @@ img {
 
 <div class="header">🐉 DRAGON TIGER 🐯</div>
 
-<h3>Choose:</h3>
+<h2>Choose:</h2>
 <button onclick="play('dragon')">Dragon</button>
 <button onclick="play('tiger')">Tiger</button>
 
-<div class="cards">
-  <div class="box">
-    <h3>Dragon</h3>
-    <img id="dragonCard" src="">
-    <p id="dragonNum"></p>
-  </div>
-
-  <div class="box">
-    <h3>Tiger</h3>
-    <img id="tigerCard" src="">
-    <p id="tigerNum"></p>
-  </div>
+<div class="box">
+  <div class="card" id="dcard">Dragon</div>
+  <div class="card" id="tcard">Tiger</div>
 </div>
 
 <div id="result"></div>
+<div id="girl">💃🎉</div>
 
 <button onclick="location.reload()">🔁 Play Again</button>
 
-<audio id="winSound" src="https://www.myinstants.com/media/sounds/win.mp3"></audio>
-<audio id="loseSound" src="https://www.myinstants.com/media/sounds/fail.mp3"></audio>
+<div class="cards">🂡 🂱 🂮 🃁 🃑 🃞</div>
 
 <script>
 function play(choice){
-  let dragon = Math.floor(Math.random()*13)+1;
-  let tiger = Math.floor(Math.random()*13)+1;
+  let d = Math.floor(Math.random()*13)+1;
+  let t = Math.floor(Math.random()*13)+1;
 
-  document.getElementById("dragonNum").innerText = dragon;
-  document.getElementById("tigerNum").innerText = tiger;
+  document.getElementById("dcard").innerHTML = "Dragon<br>"+d;
+  document.getElementById("tcard").innerHTML = "Tiger<br>"+t;
 
-  document.getElementById("dragonCard").src =
-    "https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/" + dragon + "_of_hearts.png";
+  let winner = d>t ? "dragon" : "tiger";
 
-  document.getElementById("tigerCard").src =
-    "https://raw.githubusercontent.com/hayeah/playing-cards-assets/master/png/" + tiger + "_of_spades.png";
-
-  let resultText="";
-
-  if(dragon > tiger){
-    resultText="DRAGON WINS 🐉";
-    if(choice=="dragon") document.getElementById("winSound").play();
-    else document.getElementById("loseSound").play();
+  if(choice==winner){
+    document.getElementById("result").innerHTML="🎉 YOU WIN!";
+    document.getElementById("girl").style.display="block";
+  }else{
+    document.getElementById("result").innerHTML="😢 YOU LOSE";
+    document.getElementById("girl").style.display="none";
   }
-  else if(tiger > dragon){
-    resultText="TIGER WINS 🐯";
-    if(choice=="tiger") document.getElementById("winSound").play();
-    else document.getElementById("loseSound").play();
-  }
-  else{
-    resultText="DRAW 🤝";
-  }
-
-  document.getElementById("result").innerText=resultText;
 }
 </script>
 
