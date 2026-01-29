@@ -1,103 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dragon Tiger</title>
+<title>Dragon Tiger Game</title>
 <style>
-body{
-  margin:0;
+body {
+  background: black;
+  color: white;
   font-family: Arial;
-  background:#0b0b0b;
-  color:white;
-  text-align:center;
+  text-align: center;
 }
-.header{
-  background:red;
-  padding:12px;
-  font-size:22px;
+
+#coins {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: red;
+  padding: 8px 15px;
+  border-radius: 10px;
+  font-weight: bold;
 }
-button{
-  padding:12px 25px;
-  margin:10px;
-  background:red;
-  color:white;
-  border:none;
-  border-radius:6px;
-  font-size:18px;
+
+button {
+  padding: 15px 25px;
+  font-size: 18px;
+  margin: 10px;
+  border-radius: 10px;
+  border: none;
 }
-.box{
-  display:flex;
-  justify-content:space-around;
-  margin-top:20px;
-}
-.card{
-  background:#222;
-  width:40%;
-  padding:20px;
-  border-radius:10px;
-  font-size:20px;
-}
-#result{
-  margin-top:20px;
-  font-size:22px;
-}
-#girl{
-  display:none;
-  font-size:80px;
-  animation: jump 1s infinite;
-}
-@keyframes jump{
-  0%{transform:translateY(0);}
-  50%{transform:translateY(-20px);}
-  100%{transform:translateY(0);}
-}
-.cards{
-  margin-top:40px;
-  font-size:40px;
-  animation: slide 3s linear infinite;
-}
-@keyframes slide{
-  0%{transform:translateX(-100%);}
-  100%{transform:translateX(100%);}
+
+#result {
+  margin-top: 20px;
+  font-size: 22px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="header">🐉 DRAGON TIGER 🐯</div>
+<div id="coins">Coins: 10000</div>
 
-<h2>Choose:</h2>
-<button onclick="play('dragon')">Dragon</button>
-<button onclick="play('tiger')">Tiger</button>
+<h1>🐉 Dragon vs 🐯 Tiger</h1>
 
-<div class="box">
-  <div class="card" id="dcard">Dragon</div>
-  <div class="card" id="tcard">Tiger</div>
-</div>
+<p>Choose your bet:</p>
+
+<button onclick="bet('dragon')">Bet Dragon</button>
+<button onclick="bet('tiger')">Bet Tiger</button>
 
 <div id="result"></div>
-<div id="girl">💃🎉</div>
-
-<button onclick="location.reload()">🔁 Play Again</button>
-
-<div class="cards">🂡 🂱 🂮 🃁 🃑 🃞</div>
 
 <script>
-function play(choice){
-  let d = Math.floor(Math.random()*13)+1;
-  let t = Math.floor(Math.random()*13)+1;
+let coins = 10000;
+let betAmount = 500;
 
-  document.getElementById("dcard").innerHTML = "Dragon<br>"+d;
-  document.getElementById("tcard").innerHTML = "Tiger<br>"+t;
+function bet(choice){
+  let gameResult = Math.random() < 0.5 ? "dragon" : "tiger";
 
-  let winner = d>t ? "dragon" : "tiger";
+  if(choice === gameResult){
+    coins += betAmount;
+    document.getElementById("result").innerHTML =
+      "Result: " + gameResult + "<br>YOU WIN! +" + betAmount;
+  } else {
+    coins -= betAmount;
+    document.getElementById("result").innerHTML =
+      "Result: " + gameResult + "<br>YOU LOSE! -" + betAmount;
+  }
 
-  if(choice==winner){
-    document.getElementById("result").innerHTML="🎉 YOU WIN!";
-    document.getElementById("girl").style.display="block";
-  }else{
-    document.getElementById("result").innerHTML="😢 YOU LOSE";
-    document.getElementById("girl").style.display="none";
+  document.getElementById("coins").innerHTML = "Coins: " + coins;
+
+  if(coins <= 0){
+    alert("Game Over! No coins left");
+    coins = 10000;
+    document.getElementById("coins").innerHTML = "Coins: " + coins;
   }
 }
 </script>
