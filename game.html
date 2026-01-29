@@ -1,2 +1,64 @@
-let coins = 10000000;   // 1 crore coins
-let betAmount = 100000; // bet = 1 lakh
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dragon Tiger Game</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      text-align: center;
+      font-family: Arial;
+    }
+    .coins {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: red;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    button {
+      font-size: 20px;
+      padding: 15px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="coins">Coins: <span id="coins">10000000</span></div>
+
+<h1>🐉 Dragon vs 🐯 Tiger</h1>
+<h2>Bet: 100000</h2>
+
+<button onclick="play('dragon')">Bet Dragon</button>
+<button onclick="play('tiger')">Bet Tiger</button>
+
+<h2 id="result"></h2>
+
+<script>
+let coins = 10000000;
+let betAmount = 100000;
+
+function play(choice) {
+  let result = Math.random() < 0.5 ? "dragon" : "tiger";
+
+  if (choice === result) {
+    coins += betAmount;
+    document.getElementById("result").innerText = "YOU WON! Result: " + result;
+  } else {
+    coins -= betAmount;
+    document.getElementById("result").innerText = "YOU LOST! Result: " + result;
+  }
+
+  if (coins <= 0) {
+    coins = 10000000;
+    alert("Game reset!");
+  }
+
+  document.getElementById("coins").innerText = coins;
+}
+</script>
+
+</body>
+</html>
