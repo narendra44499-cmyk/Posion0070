@@ -1,1 +1,40 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+<title>posion777 Game</title>
+<style>
+body {
+  background: black;
+  color: white;
+  text-align: center;
+  font-family: Arial;
+}
+button {
+  background: red;
+  color: white;
+  padding: 15px 30px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+</style>
+</head>
+<body>
+
+<h1>🐉 Dragon Tiger Game 🐯</h1>
+<p id="player"></p>
+<h2 id="result">Tap Start</h2>
+<button onclick="play()">Start Game</button>
+
+<script>
+document.getElementById("player").innerText =
+"Player: " + localStorage.getItem("playerName");
+
+function play() {
+  let r = Math.random() < 0.5 ? "Dragon Wins 🐉" : "Tiger Wins 🐯";
+  document.getElementById("result").innerText = r;
+}
+</script>
+
+</body>
+</html>
