@@ -1,5 +1,32 @@
 
-<body>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Game</title>
+</head>
+
+<body style="text-align:center; background-color:#f0f8ff; font-family:Arial;">
+
   <h1>Welcome to my game</h1>
+
+  <p>This is my first online game website.</p>
+
   <img src="images (7).jpeg" alt="My Game Logo" width="200">
+
+  <br><br>
+
+  <button onclick="startGame()" style="font-size:18px; padding:10px 20px;">
+    Start Game
+  </button>
+
+  <p id="gameText"></p>
+
+  <script>
+    function startGame() {
+      document.getElementById("gameText").innerHTML = 
+        "🎉 Game Started! Click the button again to play.";
+    }
+  </script>
+
 </body>
+</html>
