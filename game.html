@@ -1,10 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dragon vs Tiger</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      color: white;
+      font-family: Arial;
+    }
 
-<div class="game-box">
+    .coins {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: red;
+      padding: 15px 25px;
+      border-radius: 12px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .game {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    button {
+      padding: 12px 25px;
+      margin: 10px;
+      font-size: 18px;
+      border-radius: 8px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="coins" id="coins">Coins: 10000000</div>
+
+<div class="game">
   <h1>🐉 Dragon vs 🐯 Tiger</h1>
   <h2>Bet: 100000</h2>
 
-  <button onclick="play('dragon')">Bet Dragon</button>
-  <button onclick="play('tiger')">Bet Tiger</button>
+  <div>
+    <button onclick="play('dragon')">Bet Dragon</button>
+    <button onclick="play('tiger')">Bet Tiger</button>
+  </div>
 
-  <h2 id="result"></h2>
+  <h3 id="result"></h3>
 </div>
+
+<script>
+let coins = 10000000;
+let bet = 100000;
+
+function play(choice) {
+  if (coins < bet) {
+    alert("Not enough coins!");
+    return;
+  }
+
+  let result = Math.random() < 0.5 ? "dragon" : "tiger";
+
+  if (choice === result) {
+    coins += bet;
+    document.getElementById("result").innerText = "YOU WON! Result: " + result;
+  } else {
+    coins -= bet;
+    document.getElementById("result").innerText = "YOU LOST! Result: " + result;
+  }
+
+  document.getElementById("coins").innerText = "Coins: " + coins;
+}
+</script>
+
+</body>
+</html>
