@@ -1,21 +1,27 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 <title>Dragon vs Tiger</title>
+
 <style>
 body {
   background: black;
   color: white;
-  text-align: center;
   font-family: Arial;
+  margin: 0;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #coins {
   color: yellow;
   font-size: 32px;
   font-weight: bold;
-  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 button {
@@ -30,26 +36,26 @@ button {
 
 <div id="coins">Coins: 10000000</div>
 
-<h1>🐉 Dragon vs 🐯 Tiger</h1>
-<p>Bet: 100000</p>
+<h2>🐉 Dragon vs 🐯 Tiger</h2>
+<div>Bet: 100000</div>
 
-<button onclick="play('dragon')">Bet Dragon</button>
-<button onclick="play('tiger')">Bet Tiger</button>
+<button onclick="bet('dragon')">Bet Dragon</button>
+<button onclick="bet('tiger')">Bet Tiger</button>
 
 <p id="result"></p>
 
 <script>
 let coins = 10000000;
-let bet = 100000;
+let betAmount = 100000;
 
-function play(choice){
+function bet(choice){
   let result = Math.random() < 0.5 ? "dragon" : "tiger";
 
   if(choice === result){
-    coins += bet;
+    coins += betAmount;
     document.getElementById("result").innerText = "YOU WON! Result: " + result;
   } else {
-    coins -= bet;
+    coins -= betAmount;
     document.getElementById("result").innerText = "YOU LOST! Result: " + result;
   }
 
