@@ -1,128 +1,90 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dragon Tiger Game</title>
+  <title>posion777</title>
   <style>
     body {
       margin: 0;
-      background: radial-gradient(circle, black, #111);
-      color: white;
-      text-align: center;
       font-family: Arial, sans-serif;
-      overflow: hidden;
+      text-align: center;
+      color: white;
+      background: radial-gradient(circle, #330000, #000000);
     }
 
     h1 {
-      color: gold;
+      margin-top: 20px;
+      color: red;
       text-shadow: 0 0 10px red;
     }
 
-    #score, #timer {
+    #score, #time {
       font-size: 20px;
       margin: 5px;
     }
 
-    #gameArea {
-      position: relative;
-      width: 100vw;
-      height: 80vh;
-      border-top: 2px solid red;
-    }
-
-    #logo {
-      width: 100px;
-      position: absolute;
-      cursor: pointer;
-      display: none;
-      transition: top 0.3s, left 0.3s;
-    }
-
     #startBtn {
-      padding: 15px 40px;
-      font-size: 22px;
-      background: red;
-      color: white;
+      margin-top: 15px;
+      padding: 15px 35px;
+      font-size: 20px;
       border: none;
       border-radius: 10px;
-      cursor: pointer;
-      box-shadow: 0 0 10px red;
+      background: red;
+      color: white;
+      box-shadow: 0 0 15px red;
     }
 
-    #gameOver {
-      font-size: 28px;
-      color: yellow;
-      margin-top: 20px;
-      display: none;
+    #startBtn:active {
+      transform: scale(0.95);
+    }
+
+    #gameArea {
+      margin-top: 40px;
+    }
+
+    #dragon, #tiger {
+      width: 120px;
+      margin: 20px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    #dragon:active, #tiger:active {
+      transform: scale(1.2);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #ff6666;
     }
   </style>
 </head>
 
 <body>
 
-<h1>🐉 Dragon Tiger Tap Game 🐯</h1>
+<h1>🔥 posion777 Tap Game 🔥</h1>
 <div id="score">Score: 0</div>
-<div id="timer">Time: 30</div>
+<div id="time">Time: 30</div>
 
 <button id="startBtn" onclick="startGame()">Start Game</button>
 
 <div id="gameArea">
-  <img src="dragontiger.png" id="logo" onclick="hitLogo()">
+  <img id="dragon" src="https://i.imgur.com/9QZ7QZC.png" onclick="tapDragon()">
+  <img id="tiger" src="https://i.imgur.com/7z6FQ8P.png" onclick="tapTiger()">
 </div>
 
-<div id="gameOver"></div>
+<footer>
+  For fun only 🎮 | Made by posion777
+</footer>
 
 <script>
-let score = 0;
-let timeLeft = 30;
-let timer;
+  let score = 0;
+  let timeLeft = 30;
+  let timer;
 
-function startGame() {
-  score = 0;
-  timeLeft = 30;
-  document.getElementById("score").innerText = "Score: " + score;
-  document.getElementById("timer").innerText = "Time: " + timeLeft;
-  document.getElementById("gameOver").style.display = "none";
-  document.getElementById("startBtn").style.display = "none";
-
-  const logo = document.getElementById("logo");
-  logo.style.display = "block";
-  moveLogo();
-
-  timer = setInterval(() => {
-    timeLeft--;
-    document.getElementById("timer").innerText = "Time: " + timeLeft;
-    if (timeLeft <= 0) endGame();
-  }, 1000);
-}
-
-function moveLogo() {
-  const logo = document.getElementById("logo");
-  const area = document.getElementById("gameArea");
-
-  const maxX = area.clientWidth - 100;
-  const maxY = area.clientHeight - 100;
-
-  const x = Math.random() * maxX;
-  const y = Math.random() * maxY;
-
-  logo.style.left = x + "px";
-  logo.style.top = y + "px";
-}
-
-function hitLogo() {
-  score++;
-  document.getElementById("score").innerText = "Score: " + score;
-  moveLogo();
-}
-
-function endGame() {
-  clearInterval(timer);
-  document.getElementById("logo").style.display = "none";
-  document.getElementById("startBtn").style.display = "block";
-  document.getElementById("gameOver").style.display = "block";
-  document.getElementById("gameOver").innerText = "Game Over! Your Score: " + score;
-}
-</script>
-
-</body>
-</html>
+  function startGame() {
+    score = 0;
+    timeLeft = 30;
+    document.getElementById("score").innerText = "Score: " + score;
+    document.getElementById
