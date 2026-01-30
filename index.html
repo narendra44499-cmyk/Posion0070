@@ -2,59 +2,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Games</title>
-  <style>
-    body {
-      background: #111;
-      color: white;
-      font-family: Arial;
-      margin: 0;
-    }
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KS0Y5H5JEH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KS0Y5H5JEH');
+</script>
 
-    h2 {
-      padding: 10px;
-    }
+<title>My Games</title>
+<style>
+body {
+  background: #111;
+  color: white;
+  font-family: Arial;
+  margin: 0;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      padding: 10px;
-    }
-
-    .card {
-      position: relative;
-      border-radius: 15px;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .card span {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      background: rgba(0,0,0,0.6);
-      padding: 5px 10px;
-      border-radius: 5px;
-    }
-  </style>
-</head>
-<body>
-
-<h2>DRAGON TIGER</h2>
-
-<div class="grid">
-  <div class="card" onclick="location.href='game.html'">
-    <img src="images (7).jpeg">
-    <span>Dragon vs Tiger</span>
-  </div>
-</div>
-
-</body>
-</html>
+h2 {
+  padding: 10px;
+}
