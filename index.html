@@ -1,29 +1,102 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>My Games</title>
   <style>
     body {
-      background: black;
-      color: white;
-      text-align: center;
-      font-family: Arial;
+      background:black;
+      color:white;
+      font-family:Arial;
+      margin:0;
+      padding:0;
     }
-    button {
-      padding: 15px 30px;
-      margin: 10px;
-      font-size: 18px;
+
+    h1 {
+      text-align:center;
+      margin:20px 0;
+    }
+
+    /* Games row */
+    .games {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .game-box {
+      border: 2px solid white;
+      border-radius: 10px;
+      padding: 15px;
+      width: 150px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .game-box img {
+      width: 80px;
+      height: 80px;
+    }
+
+    /* Cashier + Steps */
+    .cashier-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .cashier {
+      border: 2px solid yellow;
+      padding: 10px 20px;
+      border-radius: 8px;
+      color: yellow;
+    }
+
+    .steps {
+      display: flex;
+      gap: 10px;
+    }
+
+    .step {
+      border: 2px solid white;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   </style>
 </head>
+
 <body>
 
 <h1>🎮 My Game Zone</h1>
 
-<button onclick="location.href='game.html'">🐉 Dragon vs Tiger</button><br>
-<button onclick="location.href='dice.html'">🎲 Dice Game</button><br>
-<button onclick="location.href='number.html'">🔢 Guess Number</button><br>
+<!-- Games side by side -->
+<div class="games">
+  <div class="game-box" onclick="location.href='game.html'">
+    <img src="images (7).jpeg">
+    <div>Dragon vs Tiger</div>
+  </div>
+
+  <div class="game-box" onclick="location.href='dice.html'">
+    <img src="images (7).jpeg">
+    <div>Dice Game</div>
+  </div>
+</div>
+
+<!-- Cashier + Steps side by side -->
+<div class="cashier-row">
+  <div class="cashier">💰 Cashier</div>
+  <div class="steps">
+    <div class="step">1</div>
+    <div class="step">2</div>
+    <div class="step">3</div>
+  </div>
+</div>
 
 </body>
 </html>
