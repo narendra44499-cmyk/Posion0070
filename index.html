@@ -1,106 +1,29 @@
+
 <!DOCTYPE html>
 <html>
 <head>
+  <title>My Games</title>
   <style>
     body {
-      margin: 0;
-      height: 100vh;
       background: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       color: white;
-      font-family: Arial, sans-serif;
-    }
-
-    .game-container {
       text-align: center;
+      font-family: Arial;
     }
-
-    .coins {
-      color: yellow;
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .title {
-      font-size: 22px;
-      margin-bottom: 10px;
-    }
-
-    .cards {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin: 20px 0;
-    }
-
-    .card {
-      width: 80px;
-      height: 120px;
-      border: 2px solid white;
-      border-radius: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 30px;
-      background: white;
-      color: black;
-    }
-
     button {
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 16px;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 18px;
     }
   </style>
 </head>
-
 <body>
-  <div class="game-container">
-    <div class="coins">Coins: 10000000</div>
-    <div class="title">🐉 Dragon vs 🐅 Tiger</div>
-    <div>Bet: 100000</div>
 
-    <div class="cards">
-      <div>
-        <div>Dragon</div>
-        <div id="dragonCard" class="card">?</div>
-      </div>
-      <div>
-        <div>Tiger</div>
-        <div id="tigerCard" class="card">?</div>
-      </div>
-    </div>
+<h1>🎮 My Game Zone</h1>
 
-    <button onclick="betDragon()">Bet Dragon</button>
-    <button onclick="betTiger()">Bet Tiger</button>
-  </div>
+<button onclick="location.href='game.html'">🐉 Dragon vs Tiger</button><br>
+<button onclick="location.href='dice.html'">🎲 Dice Game</button><br>
+<button onclick="location.href='number.html'">🔢 Guess Number</button><br>
 
-  <script>
-    function getRandomCard() {
-      return Math.floor(Math.random() * 13) + 1; // 1 to 13
-    }
-
-    function betDragon() {
-      let dragon = getRandomCard();
-      let tiger = getRandomCard();
-
-      document.getElementById("dragonCard").innerText = dragon;
-      document.getElementById("tigerCard").innerText = tiger;
-
-      if (dragon > tiger) {
-        alert("🐉 Dragon Wins!");
-      } else if (tiger > dragon) {
-        alert("🐅 Tiger Wins!");
-      } else {
-        alert("🤝 Tie!");
-      }
-    }
-
-    function betTiger() {
-      betDragon(); // same logic
-    }
-  </script>
 </body>
 </html>
