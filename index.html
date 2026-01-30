@@ -1,37 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Posion777 Login</title>
   <style>
     body {
+      margin: 0;
+      height: 100vh;
       background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       color: white;
-      text-align: center;
-      font-family: Arial;
-      margin-top: 150px;
+      font-family: Arial, sans-serif;
     }
-    button {
+
+    .game-container {
+      text-align: center;
+    }
+
+    .coins {
+      color: yellow;
       font-size: 22px;
-      padding: 15px 40px;
-      background: red;
-      color: white;
-      border: none;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: 20px 0;
+    }
+
+    .card {
+      width: 80px;
+      height: 120px;
+      border: 2px solid white;
       border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      background: white;
+      color: black;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 16px;
     }
   </style>
 </head>
+
 <body>
+  <div class="game-container">
+    <div class="coins">Coins: 10000000</div>
+    <div class="title">🐉 Dragon vs 🐅 Tiger</div>
+    <div>Bet: 100000</div>
 
-<h1>🎰 POSION777 🎰</h1>
-<p>Dummy Login (for fun)</p>
+    <div class="cards">
+      <div>
+        <div>Dragon</div>
+        <div id="dragonCard" class="card">?</div>
+      </div>
+      <div>
+        <div>Tiger</div>
+        <div id="tigerCard" class="card">?</div>
+      </div>
+    </div>
 
-<button onclick="goGame()">Login</button>
+    <button onclick="betDragon()">Bet Dragon</button>
+    <button onclick="betTiger()">Bet Tiger</button>
+  </div>
 
-<script>
-function goGame(){
-  window.location.href = "game.html";
-}
-</script>
+  <script>
+    function getRandomCard() {
+      return Math.floor(Math.random() * 13) + 1; // 1 to 13
+    }
 
+    function betDragon() {
+      let dragon = getRandomCard();
+      let tiger = getRandomCard();
+
+      document.getElementById("dragonCard").innerText = dragon;
+      document.getElementById("tigerCard").innerText = tiger;
+
+      if (dragon > tiger) {
+        alert("🐉 Dragon Wins!");
+      } else if (tiger > dragon) {
+        alert("🐅 Tiger Wins!");
+      } else {
+        alert("🤝 Tie!");
+      }
+    }
+
+    function betTiger() {
+      betDragon(); // same logic
+    }
+  </script>
 </body>
 </html>
